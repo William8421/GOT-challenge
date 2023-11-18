@@ -1,0 +1,11 @@
+<div class="container">
+    <h2 class="mt-4 mb-3">House {{houseSlug | uppercase}}</h2>
+    <h3>Members</h3>
+    <ul class="list-group">
+        <li class="list-group-item btn btn-light" *ngFor="let member of houseMembers"
+            [routerLink]="['/characters', member.slug]">
+            {{ member.name }}
+        </li>
+    </ul>
+    <button class="btn btn-outline-secondary mt-3 mx-auto" (click)="back()">Back to Houses</button>
+</div>

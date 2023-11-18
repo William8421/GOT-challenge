@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <h2 class="mt-4 mb-3">Houses</h2>
+    <input type="text" class="form-control mb-3" [(ngModel)]="searchQuery" placeholder="Search houses..."
+        (input)="filterHouses()">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let house of filteredHouses">
+            <div class="card mb-4 align-items-start btn btn-light">
+                <div class="card-body">
+                    <h5 [routerLink]="['/houses', house.slug]" class="card-title">{{ house.name }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

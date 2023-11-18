@@ -1,0 +1,12 @@
+<div class="container">
+    <h2 class="mt-4 mb-3">{{ characterDetails.name }} Details</h2>
+    <div *ngIf="characterDetails.house">
+        <p [routerLink]="['/houses', characterDetails.house.slug]">of {{ characterDetails.house.name }}</p>
+    </div>
+    <div *ngIf="characterDetails.quotes && characterDetails.quotes.length > 0">
+        <h4>Quotes:</h4>
+        <ul>
+            <li *ngFor="let quote of characterDetails.quotes">{{ quote }}</li>
+        </ul>
+    </div>
+</div>

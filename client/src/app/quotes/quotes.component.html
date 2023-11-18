@@ -1,0 +1,15 @@
+<div class="container mb-4">
+    <h2>Random Quotes</h2>
+    <div *ngFor="let quote of quotes">
+        <div *ngIf="quote.character">
+            <h5 [routerLink]="['/characters', quote.character.slug]">{{quote.character.name}}</h5>
+            <div *ngIf="quote.character.house.name">
+                <p [routerLink]="['/houses', quote.character.house.slug]">of {{quote.character.house.name}}</p>
+            </div>
+        </div>
+        <p>{{quote.sentence}}</p>
+    </div>
+    <div class="fixed-bottom text-center w-100 mb-2">
+        <button class="btn btn-primary" (click)="getRandomQuotes()">Show other Quotes</button>
+    </div>
+</div>

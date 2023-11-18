@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="mt-4 mb-3">Characters</h2>
+    <input type="text" class="form-control mb-3" [(ngModel)]="searchQuery" placeholder="Search character..."
+        (input)="filterCharacters()">
+    <div class="row">
+        <div class="col-md-6" *ngFor="let character of filteredCharacters">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" [routerLink]="['/characters', character.slug]">{{ character.name }}
+                    </h5>
+                    <div *ngIf="character.house">
+                        <p [routerLink]="['/houses', character.house.slug]">of {{ character.house.name }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
