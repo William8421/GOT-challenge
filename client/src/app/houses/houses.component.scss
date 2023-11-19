@@ -1,0 +1,17 @@
+.houses-container {
+  position: relative;
+  .houses-background {
+    background-image: url("../../assets/images/got-map.jpeg");
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+    min-height: 94vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    z-index: -1;
+  }
+}

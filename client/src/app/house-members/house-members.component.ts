@@ -1,3 +1,4 @@
+// Modules
 import { Component, OnInit } from '@angular/core';
 import { GotService } from '../services/got.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,8 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./house-members.component.scss'],
 })
 export class HouseMembersComponent implements OnInit {
+  // Variables to store data
   houseSlug: string = '';
   houseMembers: any;
+  backgroundImage: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +27,10 @@ export class HouseMembersComponent implements OnInit {
         this.houseMembers = house[0].members;
       });
     });
+    this.setBackgroundImage();
   }
-  back() {
-    this.router.navigate(['/houses']);
+  // Function to set the background image path
+  setBackgroundImage(): void {
+    this.backgroundImage = `../../assets/images/${this.houseSlug}-background.png`;
   }
 }

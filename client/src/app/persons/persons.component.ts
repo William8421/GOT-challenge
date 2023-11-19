@@ -20,7 +20,7 @@ export class PersonsComponent implements OnInit {
       this.filteredCharacters = characters;
     });
   }
-
+  // Function to filter characters based on the search query
   filterCharacters(): void {
     this.filteredCharacters = this.characters.filter((character) => {
       return character.name

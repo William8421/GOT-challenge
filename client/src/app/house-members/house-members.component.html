@@ -1,11 +1,11 @@
-<div class="container">
-    <h2 class="mt-4 mb-3">House {{houseSlug | uppercase}}</h2>
-    <h3>Members</h3>
+<div class="container-fluid house-members-container">
+    <div class="house-members-background" [ngStyle]="{'background-image': 'url('+ backgroundImage +')'}"></div>
+    <h2 class="mb-3 pt-4 ">House {{houseSlug | uppercase}}</h2>
+    <h3 class="">Members</h3>
     <ul class="list-group">
-        <li class="list-group-item btn btn-light" *ngFor="let member of houseMembers"
+        <li class="list-group-item btn mb-3 text-left member" *ngFor="let member of houseMembers"
             [routerLink]="['/characters', member.slug]">
             {{ member.name }}
         </li>
     </ul>
-    <button class="btn btn-outline-secondary mt-3 mx-auto" (click)="back()">Back to Houses</button>
 </div>

@@ -19,6 +19,7 @@ export class HousesComponent implements OnInit {
       this.filteredHouses = houses;
     });
   }
+  // Function to filter houses based on the search query
   filterHouses(): void {
     this.filteredHouses = this.houses.filter((house) => {
       return house.name.toLowerCase().includes(this.searchQuery.toLowerCase());

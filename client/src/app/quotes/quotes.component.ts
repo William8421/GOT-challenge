@@ -11,6 +11,7 @@ export class QuotesComponent implements OnInit {
 
   constructor(private gotService: GotService) {}
 
+  // Function to fetch and assign 5 random quotes
   getRandomQuotes() {
     this.gotService.getQuotes().subscribe((quotes) => {
       this.quotes = quotes;

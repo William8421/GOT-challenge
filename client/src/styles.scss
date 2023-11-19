@@ -1,1 +1,51 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display:ital,wght@0,400;0,600;1,500&display=swap");
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Libre Baskerville", serif;
+}
+
+.clicker {
+  cursor: pointer;
+}
+.clicker:hover {
+  text-decoration: underline;
+}
+
+.house-container:hover {
+  background-color: black;
+  color: white;
+}
+.stark:hover {
+  background-color: #7b906f;
+}
+.lannister:hover {
+  background-color: #7d1510;
+}
+.baratheon:hover {
+  background-color: #edca4b;
+}
+.targaryen:hover {
+  background-color: #0e0e0c;
+}
+.greyjoy:hover {
+  background-color: #0e0e0c;
+}
+.tarly:hover {
+  background-color: #686651;
+}
+.tarth:hover {
+  background-color: #e56d6d;
+}
+.bolton:hover {
+  background-color: #0e0e0c;
+}
+.baelish:hover {
+  background-color: #edca4b;
+}
+.tyrell:hover {
+  background-color: #23723e;
+}
