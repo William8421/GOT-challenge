@@ -15,47 +15,63 @@ export class CharacterDetailsComponent implements OnInit {
   characterDetails: Person = {};
   loading: boolean = false;
   error: string = '';
+  quotesError: string = '';
+
+  // Store the original quotes and currently displayed quotes
+  originalQuotes: string[] = [];
+  displayedQuotes: string[] = [];
 
   constructor(private route: ActivatedRoute, private gotService: GotService) {}
 
   ngOnInit(): void {
-    // Subscribe to route parameter changes
     this.route.paramMap.subscribe((params) => {
-      // Get and assign the character slug from the route parameters
       this.characterSlug = params.get('slug') || '';
-
-      // Load character details based on the slug
       this.getDetails();
     });
   }
 
-  // Function to load character details with loading and error handling
   getDetails(): void {
-    // Set loading to true before making the API call
     this.loading = true;
 
-    // Call the service to get character details
     this.gotService
       .getCharacterDetails(this.characterSlug)
       .pipe(
-        // Handle any errors that occur during the API call
         catchError((error: string) => {
-          // Set the error message
           this.error =
             'Error loading character details. Please try again later.';
-          // Return an empty object to continue the flow without stopping the application
           return of({});
         }),
-        // Finalize block to run after the API call is completed (success or error)
         finalize(() => {
-          // Set loading to false after the API call is completed
           this.loading = false;
         })
       )
-      // Subscribe to the observable to get the result of the API call
       .subscribe((details) => {
-        // Assign the fetched character details to the component property
         this.characterDetails = details[0];
+
+        // Set the original quotes and initially displayed quotes
+        this.originalQuotes = [...details[0].quotes];
+        this.displayedQuotes = this.getRandomQuotes(2);
       });
+  }
+
+  // Function to get random quotes from the original quotes
+  getRandomQuotes(count: number): string[] {
+    const shuffledQuotes = this.originalQuotes.sort(() => Math.random() - 0.5);
+    return shuffledQuotes.slice(0, count);
+  }
+
+  // Function to replace the displayed quotes with another set of two random quotes
+  replaceQuotes(): void {
+    const newQuotes = this.getRandomQuotes(2);
+
+    // If the character has less than three quotes, show a message
+    if (this.originalQuotes.length <= 2) {
+      // Display an error message
+      this.quotesError = `This character has only ${
+        this.originalQuotes.length
+      } ${this.originalQuotes.length === 1 ? 'quote' : 'quotes'}`;
+    } else {
+      this.displayedQuotes = newQuotes;
+    }
   }
 }

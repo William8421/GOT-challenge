@@ -1,26 +1,39 @@
-<div class="container pt-5">
-    <h2 class="mt-4 mb-3">Character Details:</h2>
-    <div *ngIf="loading" class="text-center">
-        <div class="spinner-border" role="status">
-            <span class="sr-only"></span>
+<div class="container-fluid pt-5 text-center bg-light">
+    <div class="container">
+        <h2 class=" mt-4 mb-3">Character Details:</h2>
+        <div *ngIf="loading" class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
         </div>
-    </div>
 
-    <div *ngIf="error" class="alert alert-danger">
-        {{ error }}
-    </div>
-    <div *ngIf="!error">
-
-        <h2>{{ characterDetails.name }} </h2>
-        <div *ngIf="characterDetails.house">
-            <p class="clicker" [routerLink]="['/houses', characterDetails.house.slug]">{{ characterDetails.house.name }}
-            </p>
+        <div *ngIf="error" class="alert alert-danger">
+            {{ error }}
         </div>
-        <div *ngIf="characterDetails.quotes && characterDetails.quotes.length > 0">
-            <h4>Quotes:</h4>
-            <ul>
-                <li *ngFor="let quote of characterDetails.quotes">{{ quote }}</li>
-            </ul>
+        <div *ngIf="!error">
+
+            <h2>{{ characterDetails.name }} </h2>
+            <div *ngIf="characterDetails.house">
+                <h5 class="clicker mt-3 mb-3 " [routerLink]="['/houses', characterDetails.house.slug]">{{
+                    characterDetails.house.name
+                    }}
+                </h5>
+            </div>
+            <div *ngIf="characterDetails.quotes && characterDetails.quotes.length > 0">
+                <h4 class="mb-4">Quotes:</h4>
+                <div *ngFor="let quote of displayedQuotes" class="card mb-4 w-100">
+                    <div class="card-body">
+                        <p class="fs-4">
+                            "{{ quote }}"
+                        </p>
+                    </div>
+                </div>
+                <div *ngIf=" quotesError" class="alert alert-danger">
+                    {{quotesError}}
+                </div>
+                <button class="btn btn-dark" (click)="replaceQuotes()">Replace
+                    Quotes</button>
+            </div>
         </div>
     </div>
 </div>
