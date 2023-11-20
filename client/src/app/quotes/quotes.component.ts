@@ -13,12 +13,15 @@ export class QuotesComponent implements OnInit {
 
   // Function to fetch and assign 5 random quotes
   getRandomQuotes() {
+    // Subscribe to the service method that retrieves random quotes
     this.gotService.getQuotes().subscribe((quotes) => {
+      // Assign the fetched quotes to the component property
       this.quotes = quotes;
     });
   }
 
   ngOnInit(): void {
+    // Call the function to fetch random quotes when the component is initialized
     this.getRandomQuotes();
   }
 }

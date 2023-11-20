@@ -5,7 +5,7 @@
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat;
-    min-height: 94vh;
+    min-height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -13,5 +13,9 @@
     bottom: 0;
     opacity: 0.3;
     z-index: -1;
+  }
+  .card {
+    min-height: 100px;
+    text-align: left;
   }
 }

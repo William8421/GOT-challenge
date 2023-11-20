@@ -1,7 +1,42 @@
 .home {
-  background: url("../../assets/images/game-of-thrones.jpeg");
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  width: 25%;
+  height: 100%;
   background-size: cover;
-  background-position: top;
   background-repeat: no-repeat;
-  min-height: 94vh;
+  background-position: top;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.image1 {
+  background-image: url("../../assets/images/image1.png");
+  animation-delay: 0s;
+}
+.image2 {
+  background-image: url("../../assets/images/image2.png");
+  animation-delay: 1s;
+  left: 25%;
+}
+.image3 {
+  background-image: url("../../assets/images/image3.png");
+  animation-delay: 2s;
+  left: 50%;
+}
+.image4 {
+  background-image: url("../../assets/images/image4.png");
+  animation-delay: 3s;
+  left: 75%;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
